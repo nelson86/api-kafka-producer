@@ -1,0 +1,7 @@
+app:
+  name: kafka_producer
+  description: ${app.name} is a Spring Boot application
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
