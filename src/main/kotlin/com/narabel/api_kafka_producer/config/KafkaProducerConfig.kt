@@ -20,7 +20,16 @@ class KafkaProducerConfig(
     companion object {
         fun producerProps(kafkaProperties: KafkaProperties): Map<String, Any> {
             return mapOf(
-                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to kafkaProperties.bootstrapServers
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to kafkaProperties.bootstrapServers,
+                // PROPIEDADES ADICIONALES
+                // Define los reintentos que se realizarán en caso de error.
+                ProducerConfig.RETRIES_CONFIG to 0,
+                // El producer agrupará los registros en batches, mejorando el performance (está definido en bytes).
+                ProducerConfig.BATCH_SIZE_CONFIG to 16384,
+                // Los batches se agruparan de acuerdo de un periodo de tiempo, está definido en milisegundos
+                ProducerConfig.LINGER_MS_CONFIG to 1,
+                // Define el espacio de memoria que se asignará para colocar los mensajes que están pendientes por enviar
+                ProducerConfig.BUFFER_MEMORY_CONFIG to 33554432
             )
         }
     }
