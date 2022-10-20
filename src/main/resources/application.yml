@@ -1,3 +1,8 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+
 app:
   name: kafka_producer
   description: ${app.name} is a Spring Boot application
